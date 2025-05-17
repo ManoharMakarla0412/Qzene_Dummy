@@ -29,27 +29,17 @@ const mockIngredients = {
     {
       id: 1,
       name: "Container 1",
-      ingredients: [
-        { id: "pepper", name: "Pepper", image: "/images/chilli.png", quantity: 400 },
-        { id: "radish", name: "Radish", image: "/images/mullangi.png", quantity: 230 },
-        { id: "onion", name: "Onion", image: "/images/garlic.png", quantity: 60 },
-      ]
+      ingredients: []
     },
     {
-      id: 2,
+      id: 2, 
       name: "Container 2",
-      ingredients: [
-        { id: "corn", name: "Corn", image: "/images/guva.png", quantity: 160 },
-        { id: "tomato", name: "Tomato", image: "/images/tamato.png", quantity: 125 }
-      ]
+      ingredients: []
     },
     {
       id: 3,
-      name: "Container 3",
-      ingredients: [
-        { id: "garlic", name: "Garlic", image: "/images/garlic.png", quantity: 40 },
-        { id: "ginger", name: "Ginger", image: "/images/ginger.png", quantity: 20 },
-      ]
+      name: "Container 3", 
+      ingredients: []
     },
     {
       id: 4,
@@ -57,11 +47,7 @@ const mockIngredients = {
       ingredients: []
     }
   ],
-  seasonings: [
-    { id: "chilli", name: "Chilli", image: "/images/chilli.png", count: 1, quantity: 3 },
-    { id: "lemon", name: "Lemon", image: "/images/lemon.png", count: 1, quantity: 2 },
-    { id: "ginger", name: "Ginger", image: "/images/ginger.png", count: 1, quantity: 1 }
-  ],
+  seasonings: [],
   waterOilItems: [
     { id: "water", name: "Water", image: "/images/water.png" },
     { id: "oil", name: "Oil", image: "/images/oil.png" }
@@ -131,20 +117,17 @@ const IngredientSelectionStep = ({
   };
 
   useEffect(() => {
+    // Only initialize ingredients list and empty containers if not already set
     if (recipeData.ingredients.length === 0) {
       updateRecipeData({ ingredients: mockIngredients.ingredients });
     }
 
     if (recipeData.containers.length === 0) {
-      updateRecipeData({ containers: mockIngredients.containers });
-    }
-
-    if (recipeData.seasonings.length === 0) {
-      updateRecipeData({ seasonings: mockIngredients.seasonings });
-    }
-
-    if (recipeData.waterOil.length === 0) {
-      updateRecipeData({ waterOil: mockIngredients.waterOilItems });
+      updateRecipeData({ 
+        containers: mockIngredients.containers,
+        seasonings: [],
+        waterOil: []
+      });
     }
   }, []);
 
