@@ -1,5 +1,6 @@
-
 import { Ingredient, SeasoningItem } from "@/types/mealPlanner";
+
+const FALLBACK_IMAGE = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YwZjBmMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2NjY2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5ObyBJbWFnZTwvdGV4dD48L3N2Zz4=";
 
 interface SeasoningsPanelProps {
   seasonings: SeasoningItem[];
@@ -28,7 +29,8 @@ const SeasoningsPanel = ({ seasonings, onDragStart }: SeasoningsPanelProps) => {
                 alt={seasoning.name} 
                 className="w-8 h-8 object-contain rounded-full mr-3"
                 onError={(e) => {
-                  e.currentTarget.src = `https://via.placeholder.com/100?text=${encodeURIComponent(seasoning.name)}`;
+                  e.currentTarget.onerror = null; // Prevent infinite loop
+                  e.currentTarget.src = FALLBACK_IMAGE;
                 }}
               />
               <span>{seasoning.name}</span>

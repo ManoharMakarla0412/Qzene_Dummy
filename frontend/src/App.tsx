@@ -1,4 +1,3 @@
-
 import React, { StrictMode } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
@@ -20,12 +19,12 @@ import AdminRecipeDetail from './components/admin/recipes/RecipeDetail';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App min-h-screen flex flex-col">
       <StrictMode>
         <ReactQueryProvider>
           <BrowserRouter>
             <AuthProvider>
-              <div className="container-full">
+              <div className="flex-1 relative">
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/auth" element={<Auth />} />
