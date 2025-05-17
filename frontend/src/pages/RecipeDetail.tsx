@@ -1,5 +1,4 @@
-
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";  // Add useNavigate import
 import { recipes } from "@/data/recipes";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import Footer from "@/components/Footer";
 import RecipeGrid from "@/components/RecipeGrid";
 
 const RecipeDetail = () => {
+  const navigate = useNavigate();  // Add this hook
   const { id } = useParams<{ id: string }>();
   const recipe = recipes.find(r => r.id === id);
   
@@ -41,13 +41,16 @@ const RecipeDetail = () => {
       
       <div className="container py-8 flex-grow">
         <div className="mb-6">
-          <Link to="/" className="text-qzene-purple hover:underline flex items-center gap-1">
+          <button 
+            onClick={() => navigate(-1)} 
+            className="text-qzene-purple hover:underline flex items-center gap-1"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left">
               <path d="m12 19-7-7 7-7" />
               <path d="M19 12H5" />
             </svg>
             Back to Recipes
-          </Link>
+          </button>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

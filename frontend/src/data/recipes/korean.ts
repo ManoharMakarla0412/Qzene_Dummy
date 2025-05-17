@@ -49,7 +49,7 @@ export const koreanRecipes: Recipe[] = [
   {
     id: "34",
     name: "Kimchi Jjigae",
-    image: "https://images.unsplash.com/photo-1583669690470-a1aed73b91ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     cuisine: "Korean",
     cookingTime: 35,
     servings: 4,

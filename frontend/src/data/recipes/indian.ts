@@ -225,7 +225,7 @@ export const indianRecipes: Recipe[] = [
   {
     id: "24",
     name: "Paneer Tikka Masala",
-    image: "https://images.unsplash.com/photo-1596797038530-2c107aa8e1fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     cuisine: "Indian",
     cookingTime: 45,
     servings: 4,
@@ -267,7 +267,7 @@ export const indianRecipes: Recipe[] = [
   {
     id: "25",
     name: "Aloo Gobi",
-    image: "https://images.unsplash.com/photo-1605709303005-0f8e5af80890?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     cuisine: "Indian",
     cookingTime: 30,
     servings: 4,

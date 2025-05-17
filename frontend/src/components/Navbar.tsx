@@ -1,4 +1,3 @@
-
 import { Search } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -16,7 +15,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface NavbarProps {
-  onSearch: (query: string) => void;
+  onSearch?: (query: string) => void;  // Make onSearch optional with '?'
 }
 
 const Navbar = ({ onSearch }: NavbarProps) => {
@@ -26,7 +25,7 @@ const Navbar = ({ onSearch }: NavbarProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSearch(searchQuery);
+    onSearch?.(searchQuery);  // Use optional chaining here
   };
 
   const isAdmin = profile?.role === "admin";

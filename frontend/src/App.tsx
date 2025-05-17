@@ -1,5 +1,5 @@
 import React, { StrictMode } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import './App.css';
 import Index from './pages/Index';
@@ -24,7 +24,7 @@ function App() {
       <div className="App min-h-screen flex flex-col">
         <StrictMode>
           <ReactQueryProvider>
-            <BrowserRouter basename="/">
+            <Router basename="/">
               <AuthProvider>
                 <div className="flex-1">
                   <Routes>
@@ -33,7 +33,7 @@ function App() {
                     <Route path="/all-recipes" element={<AllRecipes />} />
                     <Route path="/cuisines" element={<CuisinesPage />} />
                     <Route path="/devices" element={<DevicesPage />} />
-                    <Route path="/recipe/:id" element={<RecipeDetail />} />
+                    <Route path="/recipes/:id" element={<RecipeDetail />} />
                     
                     {/* Protected Routes */}
                     <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
@@ -62,7 +62,7 @@ function App() {
                 </div>
                 <Toaster />
               </AuthProvider>
-            </BrowserRouter>
+            </Router>
           </ReactQueryProvider>
         </StrictMode>
       </div>

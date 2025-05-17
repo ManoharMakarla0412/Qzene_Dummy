@@ -76,7 +76,7 @@ export const italianRecipes: Recipe[] = [
   {
     id: "27",
     name: "Risotto ai Funghi",
-    image: "https://images.unsplash.com/photo-1633436374942-9992db683d5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     cuisine: "Italian",
     cookingTime: 40,
     servings: 4,
