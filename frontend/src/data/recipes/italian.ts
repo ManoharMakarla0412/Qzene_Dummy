@@ -1,0 +1,162 @@
+
+import { Recipe } from '@/types';
+
+export const italianRecipes: Recipe[] = [
+  {
+    id: "9",
+    name: "Spaghetti Carbonara",
+    image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    cuisine: "Italian",
+    cookingTime: 25,
+    servings: 4,
+    difficulty: "Medium",
+    rating: 4.8,
+    deviceSupport: "Simmr",
+    chefCreated: true,
+    ingredients: [
+      "1 lb spaghetti",
+      "8 oz pancetta or bacon, diced",
+      "4 large eggs",
+      "1 cup grated Pecorino Romano cheese",
+      "1/2 cup grated Parmesan cheese",
+      "4 cloves garlic, minced",
+      "Freshly ground black pepper",
+      "Fresh parsley for garnish"
+    ],
+    instructions: [
+      "Cook spaghetti in salted water until al dente",
+      "While pasta cooks, sauté pancetta until crispy",
+      "In a bowl, whisk together eggs, Pecorino, Parmesan, and black pepper",
+      "Drain pasta, reserving 1/2 cup pasta water",
+      "Working quickly, add hot pasta to pancetta, toss well",
+      "Remove pan from heat, add egg mixture and toss until creamy",
+      "Add reserved pasta water if needed to thin the sauce",
+      "Garnish with more cheese and fresh parsley"
+    ],
+    calories: 580,
+    protein: 28,
+    fat: 24,
+    carbs: 62
+  },
+  {
+    id: "10",
+    name: "Margherita Pizza",
+    image: "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    cuisine: "Italian",
+    cookingTime: 25,
+    servings: 4,
+    difficulty: "Medium",
+    rating: 4.7,
+    deviceSupport: "None",
+    ingredients: [
+      "1 lb pizza dough",
+      "1/2 cup tomato sauce",
+      "8 oz fresh mozzarella, sliced",
+      "Fresh basil leaves",
+      "2 tbsp olive oil",
+      "Salt and pepper to taste",
+      "1/4 cup grated Parmesan cheese"
+    ],
+    instructions: [
+      "Preheat oven to 475°F with a pizza stone if available",
+      "Stretch pizza dough into a 12-inch circle",
+      "Spread tomato sauce evenly over dough",
+      "Arrange mozzarella slices on top",
+      "Bake for 10-12 minutes until crust is golden",
+      "Remove from oven, top with fresh basil leaves",
+      "Drizzle with olive oil and sprinkle with Parmesan",
+      "Slice and serve immediately"
+    ],
+    calories: 310,
+    protein: 14,
+    fat: 14,
+    carbs: 34
+  },
+  // Add more Italian recipes for variety
+  {
+    id: "27",
+    name: "Risotto ai Funghi",
+    image: "https://images.unsplash.com/photo-1633436374942-9992db683d5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    cuisine: "Italian",
+    cookingTime: 40,
+    servings: 4,
+    difficulty: "Medium",
+    rating: 4.8,
+    deviceSupport: "Simmr",
+    featured: true,
+    ingredients: [
+      "1.5 cups Arborio rice",
+      "6 cups chicken or vegetable broth, heated",
+      "1 lb mixed mushrooms, sliced",
+      "1 onion, finely diced",
+      "2 cloves garlic, minced",
+      "1/2 cup dry white wine",
+      "1/2 cup grated Parmesan cheese",
+      "2 tbsp butter",
+      "2 tbsp olive oil",
+      "2 tbsp fresh thyme leaves",
+      "Salt and pepper to taste"
+    ],
+    instructions: [
+      "In a large pan, sauté mushrooms in 1 tbsp olive oil until golden, set aside",
+      "In the same pan, heat remaining olive oil and sauté onions until translucent",
+      "Add garlic and cook for 30 seconds",
+      "Add rice and toast for 2 minutes, stirring constantly",
+      "Pour in wine and stir until absorbed",
+      "Add hot broth one ladle at a time, stirring until absorbed before adding more",
+      "Continue adding broth for about 18-20 minutes until rice is al dente",
+      "Stir in reserved mushrooms, butter, Parmesan, and thyme",
+      "Season with salt and pepper, let rest for 2 minutes before serving"
+    ],
+    calories: 420,
+    protein: 12,
+    fat: 18,
+    carbs: 52
+  },
+  {
+    id: "28",
+    name: "Lasagna",
+    image: "https://images.unsplash.com/photo-1619895092538-128341789043?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    cuisine: "Italian",
+    cookingTime: 90,
+    servings: 8,
+    difficulty: "Hard",
+    rating: 4.9,
+    deviceSupport: "Both",
+    chefCreated: true,
+    ingredients: [
+      "1 lb lasagna noodles",
+      "1 lb ground beef",
+      "1 lb Italian sausage",
+      "2 cans (28 oz each) crushed tomatoes",
+      "1 onion, diced",
+      "4 cloves garlic, minced",
+      "2 tbsp olive oil",
+      "2 tbsp Italian seasoning",
+      "16 oz ricotta cheese",
+      "16 oz mozzarella cheese, shredded",
+      "1 cup Parmesan cheese, grated",
+      "2 eggs",
+      "1/4 cup fresh basil, chopped",
+      "Salt and pepper to taste"
+    ],
+    instructions: [
+      "Preheat oven to 375°F",
+      "Cook lasagna noodles according to package instructions",
+      "In a large pot, brown ground beef and sausage, drain excess fat",
+      "Add onions and garlic, sauté until soft",
+      "Stir in crushed tomatoes and Italian seasoning, simmer for 30 minutes",
+      "In a bowl, mix ricotta, eggs, 1/2 cup Parmesan, and basil",
+      "In a 9x13 baking dish, spread a thin layer of meat sauce",
+      "Layer noodles, ricotta mixture, meat sauce, and mozzarella",
+      "Repeat layers, ending with sauce and cheese on top",
+      "Cover with foil and bake for 25 minutes",
+      "Remove foil and bake for another 25 minutes until bubbly",
+      "Let rest for 15 minutes before serving"
+    ],
+    calories: 580,
+    protein: 38,
+    fat: 32,
+    carbs: 36
+  }
+];
