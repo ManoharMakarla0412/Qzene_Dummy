@@ -9,29 +9,60 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Allowed origins for CORS
+// Updated CORS configuration
 const allowedOrigins = [
-  'http://localhost:8080',
-  'https://qzene-dummy.vercel.app'
+  'http://localhost:3000',   // React dev server
+  'http://localhost:8080',   // Alternative dev port
+  'http://localhost:5173',   // Vite dev server
+  'https://qzene-dummy.vercel.app',
+  // Add your production domain here
 ];
 
-// Middleware
+// Enhanced CORS options
 app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl requests)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps or Postman)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
     }
+    return callback(null, true);
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept',
+    'Authorization',
+    'Access-Control-Allow-Headers'
+  ],
+  exposedHeaders: ['Content-Range', 'X-Content-Range']
 }));
-app.use(express.json());
+
+// Increase payload limit for image uploads
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+// Pre-flight requests
+app.options('*', cors());
 
 // Routes
 app.use('/api', recipeRoutes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).json({ error: 'Invalid token' });
+  } else if (err.message.includes('CORS')) {
+    res.status(403).json({ error: 'CORS error: ' + err.message });
+  } else {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI, {

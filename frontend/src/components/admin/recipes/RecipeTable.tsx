@@ -49,6 +49,8 @@ const RecipeTable = ({
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
         body: JSON.stringify({ status: 'approved' })
       });
@@ -82,6 +84,8 @@ const RecipeTable = ({
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
         body: JSON.stringify({ status: 'rejected' })
       });
