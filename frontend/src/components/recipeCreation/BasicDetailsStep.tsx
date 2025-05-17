@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { RecipeData } from "@/types/recipeCreation";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
@@ -30,14 +30,17 @@ const BasicDetailsStep = ({
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Validate form data
+  const validateForm = () => {
     const errors = [];
     if (!formData.name?.trim()) errors.push("Recipe name is required");
     if (!formData.author?.trim()) errors.push("Author name is required");
     if (!formData.cuisine?.trim()) errors.push("Cuisine type is required");
+    return errors;
+  };
+
+  const handleSave = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    const errors = validateForm();
 
     if (errors.length > 0) {
       toast({
@@ -49,26 +52,39 @@ const BasicDetailsStep = ({
     }
 
     setIsSubmitting(true);
+    updateRecipeData({
+      name: formData.name.trim(),
+      author: formData.author.trim(),
+      cuisine: formData.cuisine.trim(),
+    });
+    setIsSubmitting(false);
+    toast({
+      title: "Success",
+      description: "Recipe details saved",
+    });
+  };
 
-    try {
-      // Update the data first
-      await updateRecipeData({
-        name: formData.name.trim(),
-        author: formData.author.trim(),
-        cuisine: formData.cuisine.trim(),
-      });
+  const handleContinue = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const errors = validateForm();
 
-      // Immediately move to next step
-      onNext();
-    } catch (error) {
+    if (errors.length > 0) {
       toast({
-        title: "Error",
-        description: "Failed to save recipe details",
+        title: "Required Fields Missing",
+        description: errors.join(", "),
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
+      return;
     }
+
+    setIsSubmitting(true);
+    updateRecipeData({
+      name: formData.name.trim(),
+      author: formData.author.trim(),
+      cuisine: formData.cuisine.trim(),
+    });
+    onNext();
+    setIsSubmitting(false);
   };
 
   return (
@@ -87,7 +103,7 @@ const BasicDetailsStep = ({
           Create New Recipe
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <div className="space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left Column */}
             <div className="space-y-6">
@@ -153,16 +169,30 @@ const BasicDetailsStep = ({
             </ul>
           </div>
 
-          <div className="flex justify-center pt-4">
+          <div className="flex justify-center pt-4 space-x-4">
             <button
-              type="submit"
+              onClick={handleSave}
               disabled={isSubmitting}
-              className="w-full md:w-1/2 bg-primary hover:bg-primary/90 text-white py-3 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              className="w-full md:w-1/4 bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
             >
               {isSubmitting ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                  <span>Saving Details...</span>
+                  <span>Saving...</span>
+                </>
+              ) : (
+                <span>Save Details</span>
+              )}
+            </button>
+            <button
+              onClick={handleContinue}
+              disabled={isSubmitting}
+              className="w-full md:w-1/4 bg-primary hover:bg-primary/90 text-white py-3 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                  <span>Continuing...</span>
                 </>
               ) : (
                 <>
@@ -172,7 +202,7 @@ const BasicDetailsStep = ({
               )}
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
