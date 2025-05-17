@@ -9,8 +9,8 @@ import IngredientSelectionStep from "@/components/recipeCreation/IngredientSelec
 import PreparationStep from "@/components/recipeCreation/PreparationStep";
 import CookingInstructionsStep from "@/components/recipeCreation/CookingInstructionsStep";
 import IngredientsServeStep from "@/components/recipeCreation/IngredientsServeStep";
+import { API_URL } from "@/lib/constants";
 
-const API_URL = 'http://localhost:5000/api';
 
 interface RecipeStepperProps {
   initialRecipeId: string | null;
@@ -45,7 +45,7 @@ const RecipeStepper = ({ initialRecipeId, initialRecipeData }: RecipeStepperProp
         return;
       }
 
-      const response = await fetch(`${API_URL}/recipes`, {
+      const response = await fetch(`${API_URL}/api/recipes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -103,8 +103,8 @@ const RecipeStepper = ({ initialRecipeId, initialRecipeData }: RecipeStepperProp
       setLoading(true);
 
       const url = savedRecipeId 
-        ? `${API_URL}/recipes/${savedRecipeId}`
-        : `${API_URL}/recipes`;
+        ? `${API_URL}/api/recipes/${savedRecipeId}`
+        : `${API_URL}/api/recipes`;
 
       const response = await fetch(url, {
         method: savedRecipeId ? 'PUT' : 'POST',

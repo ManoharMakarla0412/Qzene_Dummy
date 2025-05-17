@@ -19,8 +19,8 @@ import {
   X
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { API_URL } from "@/lib/constants";
 
-const API_URL = 'http://localhost:5000/api';
 
 interface RecipeTableProps {
   recipes: any[] | undefined;
@@ -45,7 +45,7 @@ const RecipeTable = ({
   const handleApprove = async (recipeId: string) => {
     try {
       setLoadingId(recipeId);
-      const response = await fetch(`${API_URL}/recipes/${recipeId}/status`, {
+      const response = await fetch(`${API_URL}/api/recipes/${recipeId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const RecipeTable = ({
   const handleReject = async (recipeId: string) => {
     try {
       setLoadingId(recipeId);
-      const response = await fetch(`${API_URL}/recipes/${recipeId}/status`, {
+      const response = await fetch(`${API_URL}/api/recipes/${recipeId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

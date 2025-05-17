@@ -29,7 +29,7 @@ const RecipeManagement = () => {
   const { data: recipes, isLoading, isError, refetch } = useQuery({
     queryKey: ["admin-recipes"],
     queryFn: async () => {
-      const response = await fetch(`${API_URL}/recipes`);
+      const response = await fetch(`${API_URL}/api/recipes`);
       if (!response.ok) {
         throw new Error('Failed to fetch recipes');
       }
@@ -41,7 +41,7 @@ const RecipeManagement = () => {
   // Approve recipe mutation
   const approveMutation = useMutation({
     mutationFn: async (recipeId: string) => {
-      const response = await fetch(`${API_URL}/recipes/${recipeId}/status`, {
+      const response = await fetch(`${API_URL}/api/recipes/${recipeId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const RecipeManagement = () => {
   // Reject recipe mutation
   const rejectMutation = useMutation({
     mutationFn: async (recipeId: string) => {
-      const response = await fetch(`${API_URL}/recipes/${recipeId}/status`, {
+      const response = await fetch(`${API_URL}/api/recipes/${recipeId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const RecipeManagement = () => {
   // Delete recipe mutation
   const deleteMutation = useMutation({
     mutationFn: async (recipeId: string) => {
-      const response = await fetch(`${API_URL}/recipes/${recipeId}`, {
+      const response = await fetch(`${API_URL}/api/recipes/${recipeId}`, {
         method: 'DELETE'
       });
       
