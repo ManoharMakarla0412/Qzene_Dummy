@@ -13,8 +13,8 @@ import RecipeTable from "./RecipeTable";
 import CategoryPanel from "./CategoryPanel";
 import TagPanel from "./TagPanel";
 import DeleteConfirmDialog from "./DeleteConfirmDialog";
+import { API_URL } from "@/lib/constants";
 
-const API_URL = 'http://localhost:5000/api';
 
 const RecipeManagement = () => {
   const navigate = useNavigate();
