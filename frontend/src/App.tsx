@@ -16,54 +16,57 @@ import CreateRecipe from './pages/CreateRecipe';
 import { AuthProvider } from './contexts/AuthContext';
 import { ReactQueryProvider } from './providers/query-client-provider';
 import AdminRecipeDetail from './components/admin/recipes/RecipeDetail';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   return (
-    <div className="App min-h-screen flex flex-col">
-      <StrictMode>
-        <ReactQueryProvider>
-          <BrowserRouter>
-            <AuthProvider>
-              <div className="flex-1 relative">
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/auth" element={<Auth />} />
-                  <Route path="/all-recipes" element={<AllRecipes />} />
-                  <Route path="/cuisines" element={<CuisinesPage />} />
-                  <Route path="/devices" element={<DevicesPage />} />
-                  <Route path="/recipe/:id" element={<RecipeDetail />} />
-                  
-                  {/* Protected Routes */}
-                  <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-                  <Route path="/create-recipe" element={<ProtectedRoute><CreateRecipe /></ProtectedRoute>} />
-                  <Route path="/create-recipe/:id" element={<ProtectedRoute><CreateRecipe /></ProtectedRoute>} />
-                  
-                  {/* Admin Routes */}
-                  <Route path="/admin" element={
-                    <ProtectedRoute adminOnly={true}>
-                      <AdminDashboard />
-                    </ProtectedRoute>
-                  } />
-                  <Route path="/admin/recipes/:id" element={
-                    <ProtectedRoute adminOnly={true}>
-                      <AdminRecipeDetail />
-                    </ProtectedRoute>
-                  } />
-                  <Route path="/admin/*" element={
-                    <ProtectedRoute adminOnly={true}>
-                      <AdminDashboard />
-                    </ProtectedRoute>
-                  } />
-                  
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </div>
-              <Toaster />
-            </AuthProvider>
-          </BrowserRouter>
-        </ReactQueryProvider>
-      </StrictMode>
-    </div>
+    <ErrorBoundary>
+      <div className="App min-h-screen flex flex-col">
+        <StrictMode>
+          <ReactQueryProvider>
+            <BrowserRouter basename="/">
+              <AuthProvider>
+                <div className="flex-1">
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/auth" element={<Auth />} />
+                    <Route path="/all-recipes" element={<AllRecipes />} />
+                    <Route path="/cuisines" element={<CuisinesPage />} />
+                    <Route path="/devices" element={<DevicesPage />} />
+                    <Route path="/recipe/:id" element={<RecipeDetail />} />
+                    
+                    {/* Protected Routes */}
+                    <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/create-recipe" element={<ProtectedRoute><CreateRecipe /></ProtectedRoute>} />
+                    <Route path="/create-recipe/:id" element={<ProtectedRoute><CreateRecipe /></ProtectedRoute>} />
+                    
+                    {/* Admin Routes */}
+                    <Route path="/admin" element={
+                      <ProtectedRoute adminOnly={true}>
+                        <AdminDashboard />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/admin/recipes/:id" element={
+                      <ProtectedRoute adminOnly={true}>
+                        <AdminRecipeDetail />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/admin/*" element={
+                      <ProtectedRoute adminOnly={true}>
+                        <AdminDashboard />
+                      </ProtectedRoute>
+                    } />
+                    
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </div>
+                <Toaster />
+              </AuthProvider>
+            </BrowserRouter>
+          </ReactQueryProvider>
+        </StrictMode>
+      </div>
+    </ErrorBoundary>
   );
 }
 
