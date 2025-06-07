@@ -9,7 +9,6 @@ import CuisinesPage from './pages/CuisinesPage';
 import DevicesPage from './pages/DevicesPage';
 import RecipeDetail from './pages/RecipeDetail';
 import Dashboard from './pages/Dashboard';
-import AdminDashboard from './pages/AdminDashboard';
 import NotFound from './pages/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 import CreateRecipe from './pages/CreateRecipe';
@@ -41,21 +40,21 @@ function App() {
                     <Route path="/create-recipe/:id" element={<ProtectedRoute><CreateRecipe /></ProtectedRoute>} />
                     
                     {/* Admin Routes */}
-                    <Route path="/admin" element={
+                    {/* <Route path="/admin" element={
                       <ProtectedRoute adminOnly={true}>
                         <AdminDashboard />
                       </ProtectedRoute>
-                    } />
-                    <Route path="/admin/recipes/:id" element={
+                    } /> */}
+                    {/* <Route path="/admin/recipes/:id" element={
                       <ProtectedRoute adminOnly={true}>
                         <AdminRecipeDetail />
                       </ProtectedRoute>
-                    } />
-                    <Route path="/admin/*" element={
+                    } /> */}
+                    {/* <Route path="/admin/*" element={
                       <ProtectedRoute adminOnly={true}>
                         <AdminDashboard />
                       </ProtectedRoute>
-                    } />
+                    } /> */}
                     
                     <Route path="*" element={<NotFound />} />
                   </Routes>

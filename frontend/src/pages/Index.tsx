@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { cuisines, getFeaturedRecipes, getChefCreatedRecipes, getRecipesByCuisine, recipes } from "@/data/recipes";
-import { CuisineType } from "@/types";
+import { getFeaturedRecipes, getChefCreatedRecipes, getRecipesByCuisine, recipes } from "@/data/recipes";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import RecipeGrid from "@/components/RecipeGrid";
